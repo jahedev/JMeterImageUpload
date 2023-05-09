@@ -1,0 +1,15 @@
+{
+  "name": "jmeterimageupload",
+  "version": "1.0.0",
+  "description": "A website that uploads images to test jmeter performance.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jahed Hossain",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "pug": "^3.0.2"
+  }
+}
