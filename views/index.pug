@@ -1,0 +1,25 @@
+doctype html
+html
+    head 
+        title JMeter Image Upload
+        style 
+            include ./include/style.css
+
+    body 
+        main.main
+            .center-container
+                h1.heading JMeter Image Upload Test 
+                p. 
+                    This is a test website for demonstrating image upload 
+                    performance testing with JMeter.
+                form.image-upload-form(action="/uploadImage" method="post") 
+                    label(for="imageName") Name of Image: 
+                    input.name-input(type="text" name="imageName")
+                    br
+                    label(for="imageDesc") Image Description: 
+                    textarea.name-input(type="text" name="imageDesc")
+                    br
+                    label(for="imageFile") Upload your image: 
+                    input.image-chooser-input(type="file" name="imageFile")
+                    br
+                    input.submit-btn(type="submit" value="Submit") 

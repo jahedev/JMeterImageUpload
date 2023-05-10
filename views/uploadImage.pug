@@ -1,0 +1,22 @@
+doctype html 
+html 
+    head 
+        title Image Upload Status
+        style
+            include ./include/style.css
+    body 
+        main.main
+            .center-container
+                if success
+                    h3.heading.success Image uploaded successfully.
+                else
+                    h3.heading.error Unable to upload image.
+                p
+                    span.bold Image Name: 
+                    | #{imageName}
+                p 
+                    span.bold Image Desc: 
+                    | #{imageDesc}
+                p
+                    span.bold Link: 
+                    | #{uploadedUrl}
