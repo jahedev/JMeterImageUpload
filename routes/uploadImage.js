@@ -4,8 +4,16 @@ const aws = require('../lib/aws_client')
 const uuid = require('uuid')
 const fs = require('fs')
 const multer = require('multer')
+const captcha = require('../lib/captcha')
 
 router.get('/', (req, res) => {
+  // Captcha Test
+  // const captchaObject = captcha()
+  // const captchaText = captchaObject.text
+  // res.render('captcha', { captchaImage: captchaObject.data })
+  // console.log(captchaText)
+  // return
+
   res.render('error', {
     title: '404 - Not Found',
     message:
@@ -15,42 +23,45 @@ router.get('/', (req, res) => {
 
 router.post('/', async (req, res, next) => {
   // file upload error checking and restrictions
-  {
-    if (!req.files || !req.files.imageFile) {
-      res.render('error', {
-        title: '400 - Bad Request',
-        message: 'You did not upload an image using the form.',
-      })
-      return
-    }
-    const fileType = req.files.imageFile.mimetype.trim()
-    if (
-      fileType !== 'image/png' &&
-      fileType !== 'image/jpg' &&
-      fileType !== 'image/gif'
-    ) {
-      res.render('error', {
-        title: '400 - Bad Request',
-        message: 'That file extension is not supported.',
-      })
-      return
-    }
+  if (!req.files || !req.files.imageFile) {
+    res.render('error', {
+      title: '400 - Bad Request',
+      message: 'You did not upload an image using the form.',
+    })
+    return
+  }
+
+  const fileType = req.files.imageFile.mimetype.trim()
+
+  if (
+    fileType !== 'image/png' &&
+    fileType !== 'image/jpg' &&
+    fileType !== 'image/jpeg' &&
+    fileType !== 'image/gif'
+  ) {
+    // console.log('Unsupported Extension: ' + fileType)
+    res.render('error', {
+      title: '400 - Bad Request',
+      message: 'That file extension is not supported.',
+    })
+    return
   }
 
   const { imageName, imageDesc, imageFile } = req.body
+  const ext = '.' + fileType.substring(fileType.indexOf('/') + 1)
   let uploadedUrl = 'N/A'
   let success = true
 
-  // console.log(form)
+  // upload to aws s3
+  const key = uuid.v4() + ext
+  const filePath = req.files.imageFile.tempFilePath
+  const fileContent = fs.readFileSync(filePath)
+  await aws.createObject(fileContent, key)
 
-  // const key = uuid.v4() + '.txt'
-  // console.log(key)
-  // console.log(req.headers['filename'])
-  // console.log(typeof imageFile)
-
-  // console.log(req)
-
-  // await aws.createObject(imageFile, key)
+  // delete temporary file
+  fs.unlink(filePath, (err) => {
+    if (err) console.log(err)
+  })
   // await aws.listBuckets()
 
   // finally

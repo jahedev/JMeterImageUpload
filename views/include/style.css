@@ -79,6 +79,10 @@ form input[type='submit']:active {
   background-color: #072a42;
 }
 
+form textarea {
+  resize: vertical;
+}
+
 .heading {
   font-size: 1.6rem;
   text-align: center;

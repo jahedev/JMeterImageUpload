@@ -13,6 +13,7 @@ app.use(
     useTempFiles: true,
     tempFileDir: 'tmp/',
     safeFileNames: true,
+    preserveExtension: true,
   })
 )
 app.set('view engine', 'pug')
