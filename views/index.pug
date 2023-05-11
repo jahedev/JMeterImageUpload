@@ -12,7 +12,7 @@ html
                 p. 
                     This is a test website for demonstrating image upload 
                     performance testing with JMeter.
-                form.image-upload-form(action="/uploadImage" method="post") 
+                form.image-upload-form(method="POST" action="/uploadImage" enctype="multipart/form-data" ) 
                     label(for="imageName") Name of Image: 
                     input.name-input(type="text" name="imageName")
                     br
@@ -20,6 +20,6 @@ html
                     textarea.name-input(type="text" name="imageDesc")
                     br
                     label(for="imageFile") Upload your image: 
-                    input.image-chooser-input(type="file" name="imageFile")
+                    input.image-chooser-input(type="file" name="imageFile" accept="image/png, image/gif, image/jpeg")
                     br
                     input.submit-btn(type="submit" value="Submit") 
