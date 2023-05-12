@@ -9,9 +9,10 @@ router.get('/', (req, res) => {
     case 'captcha':
       // Captcha Test
       const captchaObject = captcha()
-      res.render('captcha', { captchaImage: captchaObject.data })
+      // console.log(req.session)
       req.session.captchaText = captchaObject.text
-      console.log(req.session)
+      res.render('captcha', { captchaImage: captchaObject.data })
+      // console.log(req.session)
       break
     default:
       res.render('index')

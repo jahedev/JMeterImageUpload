@@ -73,7 +73,15 @@ router.post('/', async (req, res, next) => {
 })
 
 router.post('/captcha', async (req, res, next) => {
-  console.log(req.session)
+  if (
+    !req.session.captchaText ||
+    !req.body.captcha ||
+    req.session.captchaText !== req.body.captcha
+  )
+    return res.render('error', {
+      title: '400 - Bad Request',
+      message: 'You did not type the CAPTCHA text correctly.',
+    })
   // file upload error checking and restrictions
   if (!req.files || !req.files.imageFile) {
     res.render('error', {
@@ -109,16 +117,16 @@ router.post('/captcha', async (req, res, next) => {
   const filePath = req.files.imageFile.tempFilePath
   const fileContent = fs.readFileSync(filePath)
 
-  // await aws.createObject(fileContent, key).then((result) => {
-  //   console.log('file completed uploading.')
-  //   console.log(result)
-  //   uploadedUrl = result
+  await aws.createObject(fileContent, key).then((result) => {
+    console.log('file completed uploading.')
+    // console.log(result)
+    uploadedUrl = result
 
-  //   // delete temporary file
-  //   fs.unlink(filePath, (err) => {
-  //     if (err) console.log(err)
-  //   })
-  // })
+    // delete temporary file
+    fs.unlink(filePath, (err) => {
+      if (err) console.log(err)
+    }).then('temp file deleted.')
+  })
 
   // finally
   res.render('uploadImage', { success, imageName, imageDesc, uploadedUrl })

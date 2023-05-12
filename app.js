@@ -26,7 +26,7 @@ app.use(
     cookie: {
       maxAge: 24 * 60 * 60 * 1000,
     },
-    cookie: { secure: false, httpOnly: false },
+    cookie: { secure: false },
   })
 )
 app.set('view engine', 'pug')
