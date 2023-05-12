@@ -1,12 +1,27 @@
 doctype html
 html
     head 
-        title (Captcha) JMeter Image Upload
+        title JMeter Image Upload
         style 
             include ./include/style.css
 
     body 
         main.main
             .center-container
-                h1.heading Captcha Test
-                div !{captchaImage}
+                h1.heading JMeter Image Upload Test 
+                p. 
+                    This is a test website for demonstrating image upload 
+                    performance testing with JMeter.
+                form.image-upload-form(method="POST" action="/uploadImage/captcha" enctype="multipart/form-data" ) 
+                    label(for="imageName") Name of Image: 
+                    input.name-input(type="text" name="imageName")
+                    br
+                    label(for="imageDesc") Image Description: 
+                    textarea.name-input(type="text" name="imageDesc" maxlength="250")
+                    br
+                    label(for="imageFile") Upload your image: 
+                    input.image-chooser-input(type="file" name="imageFile" accept="image/png, image/gif, image/jpeg")
+                    br
+                    div !{captchaImage}
+                    input.name-input(type="text" name="captcha")
+                    input.submit-btn(type="submit" value="Submit") 
