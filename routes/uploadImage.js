@@ -48,24 +48,30 @@ router.post('/', async (req, res, next) => {
   }
 
   const { imageName, imageDesc, imageFile } = req.body
-  const ext = '.' + fileType.substring(fileType.indexOf('/') + 1)
+  const ext = fileType.substring(fileType.indexOf('/') + 1)
   let uploadedUrl = 'N/A'
   let success = true
 
   // upload to aws s3
-  const key = uuid.v4() + ext
+  const key = `${removeSpecialChars(imageName)}${uuid.v4()}.${ext}`
   const filePath = req.files.imageFile.tempFilePath
   const fileContent = fs.readFileSync(filePath)
-  await aws.createObject(fileContent, key)
 
-  // delete temporary file
-  fs.unlink(filePath, (err) => {
-    if (err) console.log(err)
+  await aws.createObject(fileContent, key).then((result) => {
+    console.log('file completed uploading.')
+    console.log(result)
+    uploadedUrl = result
+
+    // delete temporary file
+    fs.unlink(filePath, (err) => {
+      if (err) console.log(err)
+    })
   })
-  // await aws.listBuckets()
 
   // finally
   res.render('uploadImage', { success, imageName, imageDesc, uploadedUrl })
 })
+
+const removeSpecialChars = (str) => str.replace(/[^a-zA-Z0-9]/g, '')
 
 module.exports = router

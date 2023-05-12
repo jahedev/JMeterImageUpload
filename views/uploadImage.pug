@@ -17,6 +17,6 @@ html
                 p 
                     span.bold Image Desc: 
                     | #{imageDesc}
-                p
-                    span.bold Link: 
-                    | #{uploadedUrl}
+                p.bold Link: 
+                    a(href=uploadedUrl) Download
+                img(src=uploadedUrl)

@@ -38,6 +38,10 @@ main .center-container p {
   font-size: 1.1rem;
 }
 
+main .center-container img {
+  max-width: 300px;
+}
+
 form.image-upload-form {
   display: flex;
   flex-direction: column;
