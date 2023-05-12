@@ -49,7 +49,7 @@ router.post('/', async (req, res, next) => {
 
   const { imageName, imageDesc, imageFile } = req.body
   const ext = fileType.substring(fileType.indexOf('/') + 1)
-  let uploadedUrl = 'N/A'
+  let uploadedUrl = ''
   let success = true
 
   // upload to aws s3
@@ -57,16 +57,16 @@ router.post('/', async (req, res, next) => {
   const filePath = req.files.imageFile.tempFilePath
   const fileContent = fs.readFileSync(filePath)
 
-  await aws.createObject(fileContent, key).then((result) => {
-    console.log('file completed uploading.')
-    console.log(result)
-    uploadedUrl = result
+  // await aws.createObject(fileContent, key).then((result) => {
+  //   console.log('file completed uploading.')
+  //   console.log(result)
+  //   uploadedUrl = result
 
-    // delete temporary file
-    fs.unlink(filePath, (err) => {
-      if (err) console.log(err)
-    })
-  })
+  //   // delete temporary file
+  //   fs.unlink(filePath, (err) => {
+  //     if (err) console.log(err)
+  //   })
+  // })
 
   // finally
   res.render('uploadImage', { success, imageName, imageDesc, uploadedUrl })
@@ -132,6 +132,6 @@ router.post('/captcha', async (req, res, next) => {
   res.render('uploadImage', { success, imageName, imageDesc, uploadedUrl })
 })
 
-const removeSpecialChars = (str) => str.replace(/[^a-zA-Z0-9]/g, '')
+const removeSpecialChars = (str = '') => str.replace(/[^a-zA-Z0-9]/g, '')
 
 module.exports = router
