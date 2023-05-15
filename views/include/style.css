@@ -105,3 +105,32 @@ form textarea {
 .bold {
   font-weight: 700;
 }
+
+.login-form label,
+.login-form span {
+  display: flex;
+}
+
+.login-form span {
+  margin-top: 5px;
+  padding-left: 5px;
+  font-size: 0.8rem;
+  white-space: pre;
+  min-height: 1.2rem;
+  color: #519260;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.login-form input {
+  left: 0;
+  right: 0;
+}
+
+.login-form .error {
+  color: #b71540;
+}

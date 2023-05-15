@@ -1,0 +1,23 @@
+doctype html
+html
+    head 
+        title JMeter Image Upload
+        style 
+            include ./include/style.css
+    body 
+        main.main
+            .center-container
+                h1.heading JMeter Image Upload Test 
+                br
+                h2 Login 
+                form.login-form(method="POST" action="/login" enctype="multipart/form-data" ) 
+                    label( for="username") Username
+                    input(type="text" id="username" name="username")
+                    span(class="error" id="usernameError")
+                    label( for="password") Password
+                    input(type="password" id="password" name="password")
+                    span(class="error" id="passwordError")
+                    br
+                    input(type="submit" value="Submit")
+        script 
+            include ./include/validate.js

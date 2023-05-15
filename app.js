@@ -21,6 +21,7 @@ app.use(session(config.session))
 
 // --- ROUTES ---
 app.use('/', require('./routes/root'))
+app.use('/', require('./routes/login'))
 app.use('/uploadImage', require('./routes/uploadImage'))
 
 // --- RUN SERVER ---
