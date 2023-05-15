@@ -22,6 +22,9 @@ const config = {
     },
     cookie: { secure: false },
   },
+  captcha: {
+    testMode: true,
+  },
 }
 
 module.exports = config

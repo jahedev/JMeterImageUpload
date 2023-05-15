@@ -19,4 +19,6 @@ router.get('/', (req, res) => {
   }
 })
 
+router.get('/protected', (req, res) => {})
+
 module.exports = router
