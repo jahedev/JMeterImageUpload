@@ -13,8 +13,8 @@ app.set('config', require('./config'))
 const config = app.get('config')
 
 // --- MIDDLEWARE ---
-
 app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(fileupload(config.fileupload))
 app.use(session(config.session))

@@ -22,3 +22,26 @@ CREATE TABLE files (
   file_description TEXT,
   upload_date TIMESTAMP DEFAULT NOW()
 );
+
+/*
+-- Example inserts for the users table
+INSERT INTO users (username, email, password, firstname, lastname)
+VALUES ('john_doe', 'john@example.com', 'password123', 'John', 'Doe');
+
+INSERT INTO users (username, email, password, firstname, lastname)
+VALUES ('jane_smith', 'jane@example.com', 'pass123', 'Jane', 'Smith');
+
+INSERT INTO users (username, email, password, firstname, lastname)
+VALUES ('alex_wilson', 'alex@example.com', 'secret', 'Alex', 'Wilson');
+
+-- Example inserts for the files table
+INSERT INTO files (user_id, file_url, file_name, file_description)
+VALUES ((SELECT user_id FROM users WHERE username = 'john_doe'), 'https://example.com/image1.jpg', 'image1.jpg', 'A beautiful landscape');
+
+INSERT INTO files (user_id, file_url, file_name, file_description)
+VALUES ((SELECT user_id FROM users WHERE username = 'john_doe'), 'https://example.com/image2.jpg', 'image2.jpg', 'A cute kitten');
+
+INSERT INTO files (user_id, file_url, file_name, file_description)
+VALUES ((SELECT user_id FROM users WHERE username = 'jane_smith'), 'https://example.com/image3.jpg', 'image3.jpg', 'An abstract artwork');
+
+*/
