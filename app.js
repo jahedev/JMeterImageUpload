@@ -1,10 +1,12 @@
 const express = require('express')
 const app = express()
+const router = express.Router()
 const pug = require('pug')
 const bodyParser = require('body-parser')
 const fileupload = require('express-fileupload')
 const session = require('express-session')
 const cookieParser = require('cookie-parser')
+const requireAuth = require('./middleware/requireAuth')
 const port = 3000
 
 // --- CONFIGURATION ---
@@ -23,6 +25,7 @@ app.use(session(config.session))
 
 // --- ROUTES ---
 app.use('/', require('./routes/root'))
+app.use('/home', requireAuth, require('./routes/home'))
 app.use('/', require('./routes/login'))
 app.use('/testdb', require('./routes/testdb'))
 app.use('/uploadImage', require('./routes/uploadImage'))

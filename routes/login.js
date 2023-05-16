@@ -5,6 +5,8 @@ const jwt = require('jsonwebtoken')
 const { getUser, userExists, insertUser } = require('../db/models/users')
 const bcrypt = require('bcrypt')
 
+require('dotenv').config()
+
 router.get('/login', (req, res) => res.render('login'))
 
 router.post('/login', async (req, res) => {
@@ -13,13 +15,21 @@ router.post('/login', async (req, res) => {
   const user = await getUser(username)
   if (!user) return res.render('login', { message: 'Username does not exist.' })
 
-  if (password === user.password)
+  if (password === user.password) {
+    const token = jwt.sign(user, process.env.JWT_SECRET, { expiresIn: '14d' })
+    res.cookie('token', token, {
+      httpOnly: true,
+      // secure: true,
+      // maxAge: 1000000,
+      // signed: true
+    })
+
     return res.render('redirect', {
       url: '/',
       heading: 'Login Successful',
       message: 'Redirecting you to the homepage...',
     })
-  else return res.render('login', { message: 'Password is incorrect.' })
+  } else return res.render('login', { message: 'Password is incorrect.' })
 })
 
 router.get('/signup', (req, res) => res.render('signup'))
