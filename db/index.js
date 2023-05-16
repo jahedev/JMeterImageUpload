@@ -1,2 +1,2 @@
-const rds = require('./rds')
+const rds = require('./client')
 module.exports = rds
