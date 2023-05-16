@@ -10,6 +10,7 @@ html
                 h1.heading JMeter Image Upload Test 
                 br
                 h2 Signup 
+                p.error #{message}
                 form.login-form(method="POST" action="/signup" enctype="multipart/form-data" ) 
                     label( for="username") Username
                     input(type="text" id="username" name="username")
@@ -20,11 +21,11 @@ html
                     label( for="password") Password
                     input(type="password" id="password" name="password")
                     span(class="error" id="passwordError")
-                    label( for="firstName") First Name
-                    input(type="text" id="firstName" name="firstName")
+                    label( for="firstname") First Name
+                    input(type="text" id="firstName" name="firstname")
                     span(class="error" id="firstNameError")
-                    label( for="lastName") Last Name
-                    input(type="text" id="lastName" name="lastName")
+                    label( for="lastname") Last Name
+                    input(type="text" id="lastName" name="lastname")
                     span(class="error" id="lastNameError") 
                     br
                     input(type="submit" value="Submit")

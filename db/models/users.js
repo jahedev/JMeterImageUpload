@@ -9,8 +9,6 @@ exports.getUser = async function (username) {
     values: [username],
   }
 
-  console.log(q)
-
   return client
     .query(q)
     .then((res) => res.rows[0])
@@ -39,7 +37,7 @@ exports.insertUser = async function (
   password,
   firstname,
   lastname,
-  email = ''
+  email = null
 ) {
   if (await module.exports.userExists(username, email))
     return 'user already exists'

@@ -94,12 +94,13 @@ form textarea {
   text-align: center;
 }
 
-.heading.success {
+.success {
   color: #519260;
 }
 
-.heading.error {
+.error {
   color: #b71540;
+  font-weight: 600;
 }
 
 .bold {
@@ -131,6 +132,6 @@ form textarea {
   right: 0;
 }
 
-.login-form .error {
-  color: #b71540;
+.redirect-url {
+  text-align: center;
 }

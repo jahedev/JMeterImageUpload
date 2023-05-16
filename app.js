@@ -4,6 +4,7 @@ const pug = require('pug')
 const bodyParser = require('body-parser')
 const fileupload = require('express-fileupload')
 const session = require('express-session')
+const cookieParser = require('cookie-parser')
 const port = 3000
 
 // --- CONFIGURATION ---
@@ -16,6 +17,7 @@ const config = app.get('config')
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(cookieParser())
 app.use(fileupload(config.fileupload))
 app.use(session(config.session))
 

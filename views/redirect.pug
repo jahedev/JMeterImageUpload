@@ -1,0 +1,14 @@
+doctype html
+html
+    head 
+        meta(http-equiv="Refresh" content=`2; url='${url}'`)
+        title Redirecting...
+        style 
+            include ./include/style.css
+    body 
+        main.main
+            .center-container
+                h1.heading #{heading}
+                br
+                p #{message}
+                a.redirect-url(href=url) Click here if you are not redirected
