@@ -2,8 +2,8 @@ const express = require('express')
 const app = express()
 const pug = require('pug')
 const bodyParser = require('body-parser')
-var fileupload = require('express-fileupload')
-var session = require('express-session')
+const fileupload = require('express-fileupload')
+const session = require('express-session')
 const port = 3000
 
 // --- CONFIGURATION ---
@@ -22,6 +22,7 @@ app.use(session(config.session))
 // --- ROUTES ---
 app.use('/', require('./routes/root'))
 app.use('/', require('./routes/login'))
+app.use('/testdb', require('./routes/testdb'))
 app.use('/uploadImage', require('./routes/uploadImage'))
 
 // --- RUN SERVER ---
