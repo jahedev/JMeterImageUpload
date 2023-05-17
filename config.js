@@ -1,3 +1,5 @@
+require("dotenv").config()
+
 const config = {
   fileupload: {
     useTempFiles: false, // saves RAM
@@ -26,7 +28,7 @@ const config = {
     testMode: true,
   },
   customSettings: {
-    useS3Upload: false,
+    useS3Upload: process.env.USE_S3.toLowerCase().trim() == "true",
   },
 }
 
