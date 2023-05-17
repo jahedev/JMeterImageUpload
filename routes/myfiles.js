@@ -17,6 +17,10 @@ router.get("/", requireAuth, async (req, res) => {
   res.render("myfiles", {
     files,
     toHref: (url) => `<a href=${url}>Download</a>`,
+    dateFormat: (dateStr) => {
+      let date = new Date(dateStr)
+      return `${date.toDateString()} ${date.toLocaleTimeString()}`
+    },
   })
 })
 

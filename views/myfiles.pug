@@ -4,23 +4,28 @@ html
         title JMeter Image Upload
         style 
             include ./include/style.css
+            include ./include/myfiles.css
 
     body 
         main.main
-            .center-container
+            .center-container.myfiles
                 h1.heading My Files
                 if !files
                     p No Files Uploaded 
                 else 
                     p Last 20 Uploaded Files
                     table 
-                        tr
-                            th Name 
-                            th Upload Date 
-                            th Download 
-                        each f in files 
-                            tr 
-                                td=f.file_name 
-                                td=f.upload_date 
-                                td!=toHref(f.file_url)
+                        thead
+                            tr
+                                th Name 
+                                th Upload Date
+                                th Description 
+                                th Link 
+                        tbody
+                            each f in files 
+                                tr 
+                                    td=f.file_name 
+                                    td=dateFormat(f.upload_date )
+                                    td=f.file_description
+                                    td!=toHref(f.file_url)
                     
