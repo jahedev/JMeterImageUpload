@@ -29,9 +29,9 @@ exports.insertFile = async function (
   const q = {
     name: "insertFile",
     text: `INSERT INTO files (user_id, file_url, file_name, file_description)
-    VALUES ($1, $2, $3, $4)
+    VALUES ($1, $2, $3, $4) RETURNING *
     `,
-    values: [user_id],
+    values: [user_id, file_url, file_name, file_description],
   }
 
   return client

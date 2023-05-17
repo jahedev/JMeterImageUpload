@@ -1,6 +1,9 @@
 const express = require("express")
 const router = express.Router()
 const { getUser, userExists, insertUser } = require("../db/models/users")
+const { getFiles, insertFile } = require("../db/models/files")
+const jwt = require("jsonwebtoken")
+const requireAuth = require("../middleware/requireAuth")
 
 router.get("/getUser/:user", async (req, res) => {
   let username = req.params.user
@@ -60,33 +63,45 @@ router.get("/insertUser/:tokens", async (req, res) => {
   )
 })
 
-router.get("/insertFile/:tokens", async (req, res) => {
+router.get("/insertFile/:tokens", requireAuth, async (req, res) => {
+  const user = req.user
+  const { user_id } = req.user
+
   let tokens = req.params.tokens
+  const [file_url, file_name, file_description] = tokens.split("&")
 
-  return true
-  const [user_id, file_url, file_name, file_description] = tokens.split("&")
+  if (![file_url, file_name, file_description].every((item) => Boolean(item)))
+    return res.send("must include: file_url, file_name, file_description")
 
-  if (
-    ![user_id, file_url, file_name, file_description].every((item) =>
-      Boolean(item)
-    )
-  )
-    return res.send(
-      "must include: user_id, file_url, file_name, file_description"
-    )
-
-  let status
+  let file
   try {
-    status = await insertFile(user_id, file_url, file_name, file_description)
+    file = await insertFile(user_id, file_url, file_name, file_description)
   } catch (error) {
     console.log(error)
   }
 
   res.send(
-    `<h1>getUser: ${username}</h1><p>
-      ${username} ${password} ${firstname} ${lastname} ${email}
+    `<h1>insertFile for : ${req.user.username}</h1><p>
+      ${user_id} ${file_url} ${file_name} ${file_description}
     </p>
-    <p>${status}</p>`
+    <p>${JSON.stringify(file)}</p>`
+  )
+})
+
+router.get("/getFiles", requireAuth, async (req, res) => {
+  const user = req.user
+  const { user_id } = req.user
+
+  let files
+  try {
+    files = await getFiles(user_id)
+  } catch (error) {
+    console.log(error)
+  }
+
+  res.send(
+    `
+    <p>${JSON.stringify(files)}</p>`
   )
 })
 
