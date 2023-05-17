@@ -135,3 +135,11 @@ form textarea {
 .redirect-url {
   text-align: center;
 }
+
+.center {
+  text-align: center;
+}
+
+a.nav-link {
+  margin-right: 10px;
+}

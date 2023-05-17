@@ -44,4 +44,12 @@ VALUES ((SELECT user_id FROM users WHERE username = 'john_doe'), 'https://exampl
 INSERT INTO files (user_id, file_url, file_name, file_description)
 VALUES ((SELECT user_id FROM users WHERE username = 'jane_smith'), 'https://example.com/image3.jpg', 'image3.jpg', 'An abstract artwork');
 
+
+SELECT f.*
+FROM files f
+JOIN users u ON f.user_id = u.user_id
+WHERE u.username = 'john_doe'
+ORDER BY f.upload_date DESC
+LIMIT 20;
+
 */
