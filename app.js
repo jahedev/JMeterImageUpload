@@ -7,7 +7,7 @@ const fileupload = require("express-fileupload")
 const session = require("express-session")
 const cookieParser = require("cookie-parser")
 const requireAuth = require("./middleware/requireAuth")
-const port = 3000
+const port = 80
 
 // --- CONFIGURATION ---
 app.set("view engine", "pug")
