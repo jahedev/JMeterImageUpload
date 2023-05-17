@@ -1,24 +1,23 @@
-const express = require('express')
+const express = require("express")
 const router = express.Router()
-const captcha = require('../lib/captcha')
+const captcha = require("../lib/captcha")
 
-router.get('/', (req, res) => {
-  if (!req.query?.type) return res.render('index')
+router.get("/", (req, res) => {
+  const captchaObject = captcha()
+  req.session.captchaText = captchaObject.text
+
+  if (!req.query?.type)
+    return res.render("captcha", { captchaImage: captchaObject.data })
 
   switch (req.query.type) {
-    case 'captcha':
-      // Captcha Test
-      const captchaObject = captcha()
-      // console.log(req.session)
-      req.session.captchaText = captchaObject.text
-      res.render('captcha', { captchaImage: captchaObject.data })
-      // console.log(req.session)
+    case "nocaptcha":
+      res.render("index")
       break
     default:
-      res.render('index')
+      res.render("captcha", { captchaImage: captchaObject.data })
   }
 })
 
-router.get('/protected', (req, res) => {})
+router.get("/protected", (req, res) => {})
 
 module.exports = router

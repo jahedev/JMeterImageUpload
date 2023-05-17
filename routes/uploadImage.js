@@ -24,7 +24,7 @@ router.get("/", (req, res) => {
   })
 })
 
-router.post("/", requireAuth, async (req, res, next) => {
+router.post("/nocaptcha", requireAuth, async (req, res, next) => {
   /* --- ERROR CHECKING --- */
   // file upload error checking and restrictions
   if (!req.files || !req.files.imageFile)
@@ -78,7 +78,7 @@ router.post("/", requireAuth, async (req, res, next) => {
     })
   else {
     fs.writeFileSync(`./fileStore/${newFileName}`, fileContent)
-    uploadedUrl = `./files/${newFileName}`
+    uploadedUrl = `/files/${newFileName}`
 
     if (useTempFiles)
       fs.unlink(imageFile.tempFilePath, (err) => {
@@ -93,7 +93,7 @@ router.post("/", requireAuth, async (req, res, next) => {
   res.render("uploadImage", { imageName, imageDesc, uploadedUrl })
 })
 
-router.post("/captcha", requireAuth, async (req, res, next) => {
+router.post("/", requireAuth, async (req, res, next) => {
   if (
     !req.session.captchaText ||
     !req.body.captcha ||
