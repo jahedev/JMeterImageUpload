@@ -9,4 +9,18 @@ html
         main.main
             .center-container
                 h1.heading My Files
-                p my files
+                if !files
+                    p No Files Uploaded 
+                else 
+                    p Files Uploaded
+                    table 
+                        tr
+                            th Name 
+                            th Upload Date 
+                            th Download 
+                        each f in files 
+                            tr 
+                                td=f.file_name 
+                                td=f.upload_date 
+                                td!=toHref(f.file_url)
+                    

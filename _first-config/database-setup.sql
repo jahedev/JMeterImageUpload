@@ -17,7 +17,7 @@ CREATE TABLE users (
 CREATE TABLE files (
   file_id SERIAL PRIMARY KEY,
   user_id INTEGER REFERENCES users(user_id) ON DELETE CASCADE,
-  file_url VARCHAR(255) NOT NULL,
+  file_url VARCHAR(8192) NOT NULL,
   file_name VARCHAR(255) NOT NULL,
   file_description TEXT,
   upload_date TIMESTAMP DEFAULT NOW()
