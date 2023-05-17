@@ -1,7 +1,7 @@
 const config = {
   fileupload: {
     useTempFiles: false, // saves RAM
-    tempFileDir: 'tmp/',
+    tempFileDir: "tmp/",
     safeFileNames: true,
     preserveExtension: true,
     limits: {
@@ -14,7 +14,7 @@ const config = {
     `,
   },
   session: {
-    secret: '52fac80d8d257736ffcb7b71b4f925d1',
+    secret: "52fac80d8d257736ffcb7b71b4f925d1",
     resave: false,
     saveUninitialized: false,
     cookie: {
@@ -24,6 +24,9 @@ const config = {
   },
   captcha: {
     testMode: true,
+  },
+  customSettings: {
+    useS3Upload: false,
   },
 }
 

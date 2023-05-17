@@ -52,6 +52,9 @@ router.post("/", requireAuth, async (req, res, next) => {
   if (useTempFiles) fileContent = fs.readFileSync(imageFile.tempFilePath)
   else fileContent = imageFile.data
 
+  // useS3Bucket?
+  const { useS3Upload } = req.app.get("config").customSettings
+
   // aws configuration
   const { imageName, imageDesc } = req.body
   const ext = fileType.substring(fileType.indexOf("/") + 1)
@@ -61,17 +64,27 @@ router.post("/", requireAuth, async (req, res, next) => {
   const newFileName = `${removeSpecialChars(imageName)}__${uuid.v4()}.${ext}`
 
   // upload to aws s3
-  await aws.createObject(fileContent, newFileName).then((result) => {
-    console.log("file completed uploading.")
-    console.log(result)
-    uploadedUrl = result
+  if (useS3Upload)
+    await aws.createObject(fileContent, newFileName).then((result) => {
+      console.log("file completed uploading.")
+      console.log(result)
+      uploadedUrl = result
 
-    // delete temporary file
+      // delete temporary file
+      if (useTempFiles)
+        fs.unlink(imageFile.tempFilePath, (err) => {
+          if (err) console.log(err)
+        })
+    })
+  else {
+    fs.writeFileSync(`./fileStore/${newFileName}`, fileContent)
+    uploadedUrl = `./files/${newFileName}`
+
     if (useTempFiles)
       fs.unlink(imageFile.tempFilePath, (err) => {
         if (err) console.log(err)
       })
-  })
+  }
 
   // update database
   insertFile(req.user.user_id, uploadedUrl, imageName, imageDesc)
