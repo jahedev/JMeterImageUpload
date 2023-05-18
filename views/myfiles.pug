@@ -10,6 +10,7 @@ html
         main.main
             .center-container.myfiles
                 h1.heading My Files
+                a(href='/') Go Back
                 if !files
                     p No Files Uploaded 
                 else 
@@ -28,4 +29,5 @@ html
                                     td=dateFormat(f.upload_date )
                                     td=f.file_description
                                     td!=toHref(f.file_url)
+                    
                     

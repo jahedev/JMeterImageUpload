@@ -12,8 +12,6 @@ router.get("/", requireAuth, async (req, res) => {
     console.log("unable to get my files")
   }
 
-  console.log(files)
-
   res.render("myfiles", {
     files,
     toHref: (url) => `<a href=${url}>Download</a>`,

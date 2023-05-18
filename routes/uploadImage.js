@@ -67,7 +67,6 @@ router.post("/nocaptcha", requireAuth, async (req, res, next) => {
   if (useS3Upload)
     await aws.createObject(fileContent, newFileName).then((result) => {
       console.log("file completed uploading.")
-      console.log(result)
       uploadedUrl = result
 
       // delete temporary file
@@ -146,7 +145,6 @@ router.post("/", requireAuth, async (req, res, next) => {
   if (useS3Upload)
     await aws.createObject(fileContent, newFileName).then((result) => {
       console.log("file completed uploading.")
-      console.log(result)
       uploadedUrl = result
 
       // delete temporary file
