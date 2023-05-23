@@ -3,7 +3,7 @@ const router = express.Router()
 const fs = require("fs")
 
 router.get("/:filename", async (req, res) => {
-  const uploadDirectory = app.get("config").customSettings.uploadPath
+  const uploadDirectory = req.app.get("config").customSettings.uploadPath
 
   let { filename } = req.params
   let path = `${uploadDirectory}/${filename}`

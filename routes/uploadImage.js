@@ -8,8 +8,6 @@ const captcha = require("../lib/captcha")
 const { insertFile } = require("../db/models/files")
 const requireAuth = require("../middleware/requireAuth")
 
-const uploadDirectory = app.get("config").customSettings.uploadPath
-
 const acceptedFileTypes = new Set([
   "image/png",
   "image/jpg",
@@ -27,6 +25,8 @@ router.get("/", (req, res) => {
 })
 
 router.post("/nocaptcha", requireAuth, async (req, res, next) => {
+  const uploadDirectory = req.app.get("config").customSettings.uploadPath
+
   /* --- ERROR CHECKING --- */
   // file upload error checking and restrictions
   if (!req.files || !req.files.imageFile)
@@ -95,6 +95,8 @@ router.post("/nocaptcha", requireAuth, async (req, res, next) => {
 })
 
 router.post("/", requireAuth, async (req, res, next) => {
+  const uploadDirectory = req.app.get("config").customSettings.uploadPath
+
   if (
     !req.session.captchaText ||
     !req.body.captcha ||
@@ -171,6 +173,8 @@ router.post("/", requireAuth, async (req, res, next) => {
   // render upload page
   res.render("uploadImage", { imageName, imageDesc, uploadedUrl })
 })
+
+const uploadFile = () => {}
 
 const removeSpecialChars = (str = "") => str.replace(/[^a-zA-Z0-9]/g, "")
 
