@@ -18,6 +18,7 @@ const acceptedFileTypes = new Set([
 
 // Tell user that this is a POST rotue
 router.get("/", (req, res) => {
+  res.status(404)
   res.render("error", {
     title: "404 - Not Found",
     message:
@@ -37,20 +38,24 @@ router.post("/nocaptcha", requireAuth, async (req, res, next) => {
       req.body.imageName &&
       req.body.imageDesc
     )
-  )
+  ) {
+    res.status(400)
     return res.render("error", {
       title: "400 - Bad Request",
       message:
         "You must provide an image name, description, and the file you want to upload.",
     })
+  }
 
   // validate file type
   const fileType = req.files.imageFile.mimetype.trim()
-  if (!acceptedFileTypes.has(fileType))
+  if (!acceptedFileTypes.has(fileType)) {
+    res.status(400)
     return res.render("error", {
       title: "400 - Bad Request",
       message: "That file extension is not supported.",
     })
+  }
 
   /* --- CONFIGURATION --- */
 
@@ -125,6 +130,7 @@ router.post("/", requireAuth, async (req, res, next) => {
     req.session.captchaText !== req.body.captcha
   ) {
     logger.error("user failed captcha or didn't do it properly", "Captcha")
+    res.status(400)
     return res.render("error", {
       title: "400 - Bad Request",
       message: "You did not type the CAPTCHA text correctly.",
@@ -140,20 +146,24 @@ router.post("/", requireAuth, async (req, res, next) => {
       req.body.imageName &&
       req.body.imageDesc
     )
-  )
+  ) {
+    res.status(400)
     return res.render("error", {
       title: "400 - Bad Request",
       message:
         "You must provide an image name, description, and the file you want to upload.",
     })
+  }
 
   // validate file type
   const fileType = req.files.imageFile.mimetype.trim()
-  if (!acceptedFileTypes.has(fileType))
+  if (!acceptedFileTypes.has(fileType)) {
+    res.status(400)
     return res.render("error", {
       title: "400 - Bad Request",
       message: "That file extension is not supported.",
     })
+  }
 
   /* --- CONFIGURATION --- */
 

@@ -168,3 +168,5 @@ Listening on http://localhost:80/
 [5/23/2023, 4:06:52 PM * Server Status]: Listening on http://localhost:80/
 [5/23/2023, 4:06:52 PM * Database]: connected to db
 [5/23/2023, 4:07:01 PM * Download]: unable to retrieve uploaded file: '/files/asdfas__6ca99d52-8b8f-46c9-84c7-e80de20fd64ac.jpeg'
+[5/23/2023, 4:15:21 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 4:15:21 PM * Database]: connected to db

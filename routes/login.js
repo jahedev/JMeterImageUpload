@@ -16,6 +16,7 @@ router.post("/login", async (req, res) => {
   const user = await getUser(username)
   if (!user) {
     logger.error(`unable to login '${username}'`)
+    res.status(401)
     return res.render("login", { message: "Username does not exist." })
   }
 
@@ -37,6 +38,7 @@ router.post("/login", async (req, res) => {
     })
   } else {
     logger.message(`user '${username}' tried to login with incorrect password.`)
+    res.status(401)
     return res.render("login", { message: "Password is incorrect." })
   }
 })
@@ -47,16 +49,22 @@ router.post("/signup", async (req, res) => {
   const { username, password, firstname, lastname, email } = req.body
 
   const userDuplicate = await userExists(username)
-  if (userDuplicate)
+  if (userDuplicate) {
+    res.status(409)
     return res.render("signup", {
       message: "Username or email already exists.",
     })
+  }
 
   // make sure fields are not undefined
-  if (![username, password, firstname, lastname].every((item) => Boolean(item)))
+  if (
+    ![username, password, firstname, lastname].every((item) => Boolean(item))
+  ) {
+    res.status(400)
     return res.render("signup", {
       message: "You must include: username, password, firstname, lastname",
     })
+  }
 
   let user
 
@@ -75,13 +83,17 @@ router.post("/signup", async (req, res) => {
 
   if (user) {
     logger.log(`signup successful for '${username}'`, "Signup")
+    res.status(201)
     return res.render("redirect", {
       url: "/login",
       heading: "Signup Successful",
       message: "Redirecting you to login...",
     })
-  } else
+  } else {
+    logger.error(`signup unsuccessful for '${username}'`, "Signup")
+    res.status(400)
     return res.render("signup", { message: "Failed to create new account." })
+  }
 })
 
 router.get("/logout", (req, res) => {
