@@ -1,26 +1,30 @@
-const client = require('../client')
+const logger = require("../../lib/logger")
+const client = require("../client")
 
-const tableName = 'users'
+const tableName = "users"
 
 exports.getUser = async function (username) {
   const q = {
-    name: 'getUser',
-    text: 'SELECT * FROM users WHERE username = $1',
+    name: "getUser",
+    text: "SELECT * FROM users WHERE username = $1",
     values: [username],
   }
 
   return client
     .query(q)
     .then((res) => res.rows[0])
-    .catch((err) => console.log(err.stack))
+    .catch((err) => {
+      console.log(err.stack)
+      logger.error("unable to GET user", "SQL Query")
+    })
 }
 
 exports.userExists = async function (username, email) {
   const q = {
-    name: 'userExists',
+    name: "userExists",
     text: email
-      ? 'SELECT * FROM users WHERE username = $1 or email = $2'
-      : 'SELECT * FROM users WHERE username = $1',
+      ? "SELECT * FROM users WHERE username = $1 or email = $2"
+      : "SELECT * FROM users WHERE username = $1",
     values: email ? [username, email] : [username],
   }
 
@@ -29,7 +33,10 @@ exports.userExists = async function (username, email) {
     .then((res) => {
       return Boolean(res.rows[0])
     })
-    .catch((err) => console.log(err.stack))
+    .catch((err) => {
+      console.log(err.stack)
+      logger.error("unable to check if user exists", "SQL Query")
+    })
 }
 
 exports.insertUser = async function (
@@ -40,10 +47,10 @@ exports.insertUser = async function (
   email = null
 ) {
   if (await module.exports.userExists(username, email))
-    return 'user already exists'
+    return "user already exists"
 
   const q = {
-    name: 'insertUser',
+    name: "insertUser",
     text: `INSERT INTO users (username, password, firstname, lastname, email)
     VALUES ($1, $2, $3, $4, $5) RETURNING *`,
     values: [username, password, firstname, lastname, email],
@@ -52,8 +59,12 @@ exports.insertUser = async function (
   return client
     .query(q)
     .then((res) => {
-      console.log('user created\n', res.rows)
-      return 'user created'
+      console.log(res.rows)
+      logger.log("user created", "SQL Query")
+      return "user created"
     })
-    .catch((err) => console.log(err))
+    .catch((err) => {
+      console.log(err.stack)
+      logger.error("unable to INSERT user", "SQL Query")
+    })
 }

@@ -7,6 +7,7 @@ const fileupload = require("express-fileupload")
 const session = require("express-session")
 const cookieParser = require("cookie-parser")
 const requireAuth = require("./middleware/requireAuth")
+const logger = require("./lib/logger")
 const { createFolder } = require("./lib/fileops")
 const port = 80
 
@@ -36,5 +37,6 @@ app.use("/uploadImage", require("./routes/uploadImage"))
 
 // --- RUN SERVER ---
 app.listen(port, () => {
-  console.log(`\nExample app listening on http://localhost:${port}/`)
+  console.log()
+  logger.special(`Listening on http://localhost:${port}/`, "Server Status")
 })

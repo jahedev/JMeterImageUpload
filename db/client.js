@@ -1,6 +1,7 @@
 // var postgres = require('postgres')
-const { Client } = require('pg')
-require('dotenv').config()
+const { Client } = require("pg")
+const logger = require("../lib/logger")
+require("dotenv").config()
 
 const client = new Client({
   host: process.env.RDS_HOSTNAME,
@@ -12,9 +13,10 @@ const client = new Client({
 
 client
   .connect()
-  .then(() => console.log('connected to database'))
+  .then(() => logger.message("connected to db", "Database"))
   .catch((err) => {
-    console.error('connection error', err.stack)
+    console.error("connection error", err.stack)
+    logger.error("unable to connect to db", "Database")
     process.exit(1)
   })
 

@@ -1,0 +1,170 @@
+[5/23/2023, 3:08:20 PM * MESSAGE]: testing
+[5/23/2023, 3:08:46 PM * Server Status]: testing
+[5/23/2023, 3:09:22 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:10:23 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:10:29 PM * LOG]: ./fileStore Folder created successfully.
+[5/23/2023, 3:10:30 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:10:40 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:10:57 PM * Server Status]: 
+Listening on http://localhost:80/
+[5/23/2023, 3:11:06 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:11:20 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:11:37 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:11:43 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:12:02 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:12:15 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:13:16 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:13:16 PM * Database]: connected to db
+[5/23/2023, 3:13:31 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:13:32 PM * Database]: connected to db
+[5/23/2023, 3:14:22 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:14:22 PM * Database]: connected to db
+[5/23/2023, 3:14:32 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:14:32 PM * Database]: connected to db
+[5/23/2023, 3:14:37 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:14:37 PM * Database]: connected to db
+[5/23/2023, 3:15:41 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:15:41 PM * Database]: connected to db
+[5/23/2023, 3:16:02 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:16:02 PM * Database]: connected to db
+[5/23/2023, 3:17:52 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:17:52 PM * Database]: connected to db
+[5/23/2023, 3:18:28 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:18:28 PM * Database]: connected to db
+[5/23/2023, 3:21:44 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:21:44 PM * Database]: connected to db
+[5/23/2023, 3:22:33 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:22:33 PM * Database]: connected to db
+[5/23/2023, 3:23:09 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:23:09 PM * Database]: connected to db
+[5/23/2023, 3:24:17 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:24:17 PM * Database]: connected to db
+[5/23/2023, 3:24:27 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:24:27 PM * Database]: connected to db
+[5/23/2023, 3:24:54 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:24:54 PM * Database]: connected to db
+[5/23/2023, 3:25:00 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:25:01 PM * Database]: connected to db
+[5/23/2023, 3:26:15 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:26:15 PM * Database]: connected to db
+[5/23/2023, 3:27:16 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:27:16 PM * Database]: connected to db
+[5/23/2023, 3:27:40 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:27:40 PM * Database]: connected to db
+[5/23/2023, 3:35:42 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:35:43 PM * Database]: connected to db
+[5/23/2023, 3:36:24 PM * File Upload]: ↑ file upload result ↑
+[5/23/2023, 3:37:20 PM * SQL Query]: user created
+[5/23/2023, 3:38:09 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:38:09 PM * Database]: connected to db
+[5/23/2023, 3:40:43 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:40:43 PM * Database]: connected to db
+[5/23/2023, 3:41:21 PM * Login]: Login Successful
+[5/23/2023, 3:42:40 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:42:40 PM * Database]: connected to db
+[5/23/2023, 3:42:51 PM * Login]: Login Successful
+[5/23/2023, 3:42:58 PM * File Upload]: file upload complete
+[5/23/2023, 3:44:24 PM * Logout]: User Logged Out
+[5/23/2023, 3:45:12 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:45:12 PM * Database]: connected to db
+[5/23/2023, 3:46:13 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:46:13 PM * Database]: connected to db
+[5/23/2023, 3:46:45 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:46:45 PM * Database]: connected to db
+[5/23/2023, 3:46:51 PM * Login]: Login Successful: ccc
+[5/23/2023, 3:48:35 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:48:35 PM * Database]: connected to db
+[5/23/2023, 3:48:37 PM * Logout]: User Logged Out
+[5/23/2023, 3:48:40 PM * Login]: Login Successful for 'ccc'
+[5/23/2023, 3:48:49 PM * File Upload]: file upload complete
+[5/23/2023, 3:50:39 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:50:39 PM * Database]: connected to db
+[5/23/2023, 3:50:49 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:50:49 PM * Database]: connected to db
+[5/23/2023, 3:52:42 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:52:42 PM * Database]: connected to db
+[5/23/2023, 3:52:45 PM * Logout]: User Logged Out
+[5/23/2023, 3:52:56 PM * SQL Query]: user created
+[5/23/2023, 3:52:56 PM * Signup]: signup successful for 'undefined'
+[5/23/2023, 3:53:27 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:53:27 PM * Database]: connected to db
+[5/23/2023, 3:53:37 PM * SQL Query]: user created
+[5/23/2023, 3:53:37 PM * Signup]: signup successful for 'undefined'
+[5/23/2023, 3:53:48 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:53:48 PM * Database]: connected to db
+[5/23/2023, 3:53:57 PM * SQL Query]: user created
+[5/23/2023, 3:53:57 PM * Signup]: signup successful for 'undefined'
+[5/23/2023, 3:54:06 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:54:06 PM * Database]: connected to db
+[5/23/2023, 3:54:12 PM * SQL Query]: user created
+[5/23/2023, 3:54:12 PM * Signup]: signup successful for 'u'
+[5/23/2023, 3:54:52 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:54:52 PM * Database]: connected to db
+[5/23/2023, 3:55:04 PM * SQL Query]: user created
+[5/23/2023, 3:55:04 PM * Signup]: signup successful for 'cvcvsdfsd'
+[5/23/2023, 3:55:16 PM * Login]: login successful for 'cvcvsdfsd'
+[5/23/2023, 3:55:37 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:55:37 PM * Database]: connected to db
+[5/23/2023, 3:55:37 PM * Logout]: User Logged Out
+[5/23/2023, 3:55:43 PM * SQL Query]: user created
+[5/23/2023, 3:55:43 PM * Signup]: signup successful for 'cvcvsdfsdcvcvsdfsd'
+[5/23/2023, 3:55:48 PM * Login]:  login successful for 'cvcvsdfsdcvcvsdfsd'
+[5/23/2023, 3:56:09 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:56:09 PM * Database]: connected to db
+[5/23/2023, 3:56:11 PM * Logout]: User Logged Out
+[5/23/2023, 3:56:12 PM * Login]:  login  successful for 'cvcvsdfsdcvcvsdfsd'
+[5/23/2023, 3:56:23 PM * Logout]: User Logged Out
+[5/23/2023, 3:56:38 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:56:38 PM * Database]: connected to db
+[5/23/2023, 3:56:45 PM * Login]:  login  successful for 'cvcvsdfsdcvcvsdfsd'
+[5/23/2023, 3:56:50 PM * File Upload]: file upload complete
+[5/23/2023, 3:57:44 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:57:44 PM * Database]: connected to db
+[5/23/2023, 3:58:42 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:58:42 PM * Database]: connected to db
+[5/23/2023, 3:58:52 PM * Captcha]: user failed or didn't do captcha test properly
+[5/23/2023, 3:59:13 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 3:59:13 PM * Database]: connected to db
+[5/23/2023, 4:00:35 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 4:00:36 PM * Database]: connected to db
+[5/23/2023, 4:00:39 PM * Captcha]: user failed captcha or didn't do it properly
+[5/23/2023, 4:00:46 PM * File Upload]: file upload complete
+[5/23/2023, 4:00:48 PM * My Files]: displaying "My Files" directory
+[5/23/2023, 4:01:34 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 4:01:34 PM * Database]: connected to db
+[5/23/2023, 4:01:39 PM * Logout]: a user logged out
+[5/23/2023, 4:01:46 PM * SQL Query]: user created
+[5/23/2023, 4:01:46 PM * Signup]: signup successful for 'm'
+[5/23/2023, 4:01:48 PM * Login]:  login  successful for 'm'
+[5/23/2023, 4:01:58 PM * File Upload]: file upload complete
+[5/23/2023, 4:03:18 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 4:03:18 PM * Database]: connected to db
+[5/23/2023, 4:03:31 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 4:03:31 PM * Download]: creating file download link for 'm__c958755a-2762-47fa-9121-2fc2cffd0b52.jpeg'
+[5/23/2023, 4:03:31 PM * Database]: connected to db
+[5/23/2023, 4:03:32 PM * Download]: creating file download link for 'm__c958755a-2762-47fa-9121-2fc2cffd0b52.jpeg'
+[5/23/2023, 4:04:02 PM * Download]: creating file download link for 'm__c958755a-2762-47fa-9121-2fc2cffd0b52.jpeg'
+[5/23/2023, 4:04:08 PM * Logout]: a user logged out
+[5/23/2023, 4:04:14 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 4:04:15 PM * Database]: connected to db
+[5/23/2023, 4:04:27 PM * SQL Query]: user created
+[5/23/2023, 4:04:27 PM * Signup]: signup successful for 'p'
+[5/23/2023, 4:04:31 PM * Login]:  login  successful for 'p'
+[5/23/2023, 4:04:37 PM * File Upload]: file upload complete
+[5/23/2023, 4:04:37 PM * Download]: creating file download link for 'p__91b7bf92-c39d-44b8-8d6a-f1c6a5bfbd39.jpeg'
+[5/23/2023, 4:04:40 PM * Download]: creating file download link for 'p__91b7bf92-c39d-44b8-8d6a-f1c6a5bfbd39.jpeg'
+[5/23/2023, 4:04:49 PM * My Files]: successfully retrieved user's uploaded files
+[5/23/2023, 4:04:51 PM * Download]: creating file download link for 'p__91b7bf92-c39d-44b8-8d6a-f1c6a5bfbd39.jpeg'
+[5/23/2023, 4:04:53 PM * Logout]: a user logged out
+[5/23/2023, 4:05:15 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 4:05:16 PM * Database]: connected to db
+[5/23/2023, 4:05:47 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 4:05:47 PM * Database]: connected to db
+[5/23/2023, 4:05:52 PM * Login]:  login  successful for 'ccc'
+[5/23/2023, 4:05:54 PM * My Files]: successfully retrieved user's uploaded files
+[5/23/2023, 4:05:56 PM * Download]: retrieving uploaded file: '/files/asdfas__6ca99d52-8b8f-46c9-84c7-e80e20fd64ac.jpeg'
+[5/23/2023, 4:06:33 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 4:06:33 PM * Database]: connected to db
+[5/23/2023, 4:06:52 PM * Server Status]: Listening on http://localhost:80/
+[5/23/2023, 4:06:52 PM * Database]: connected to db
+[5/23/2023, 4:07:01 PM * Download]: unable to retrieve uploaded file: '/files/asdfas__6ca99d52-8b8f-46c9-84c7-e80de20fd64ac.jpeg'

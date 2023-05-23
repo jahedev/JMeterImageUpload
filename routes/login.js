@@ -4,6 +4,7 @@ const users = require("../db/models/users")
 const jwt = require("jsonwebtoken")
 const { getUser, userExists, insertUser } = require("../db/models/users")
 const bcrypt = require("bcrypt")
+const logger = require("../lib/logger")
 
 require("dotenv").config()
 
@@ -13,7 +14,10 @@ router.post("/login", async (req, res) => {
   const { username, password } = req.body
 
   const user = await getUser(username)
-  if (!user) return res.render("login", { message: "Username does not exist." })
+  if (!user) {
+    logger.error(`unable to login '${username}'`)
+    return res.render("login", { message: "Username does not exist." })
+  }
 
   if (password === user.password) {
     const token = jwt.sign(user, process.env.JWT_SECRET, { expiresIn: "14d" })
@@ -24,12 +28,17 @@ router.post("/login", async (req, res) => {
       // signed: true
     })
 
+    logger.log(` login  successful for '${username}'`, "Login")
+
     return res.render("redirect", {
       url: "/",
-      heading: "Login Successful",
+      heading: `"Welcome back, ${username}!"`,
       message: "Redirecting you to the homepage...",
     })
-  } else return res.render("login", { message: "Password is incorrect." })
+  } else {
+    logger.message(`user '${username}' tried to login with incorrect password.`)
+    return res.render("login", { message: "Password is incorrect." })
+  }
 })
 
 router.get("/signup", (req, res) => res.render("signup"))
@@ -60,21 +69,24 @@ router.post("/signup", async (req, res) => {
       email || null
     )
   } catch (err) {
-    // console.log(err.stack)
-    console.log("=> Failed to create new user.")
+    console.log(err.stack)
+    logger.error(`=> Failed to create new user '${username}'.`)
   }
 
-  if (user)
+  if (user) {
+    logger.log(`signup successful for '${username}'`, "Signup")
     return res.render("redirect", {
       url: "/login",
       heading: "Signup Successful",
       message: "Redirecting you to login...",
     })
-  else return res.render("signup", { message: "Failed to create new account." })
+  } else
+    return res.render("signup", { message: "Failed to create new account." })
 })
 
 router.get("/logout", (req, res) => {
   res.clearCookie("token")
+  logger.log("a user logged out", "Logout")
   res.redirect("/")
 })
 

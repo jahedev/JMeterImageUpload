@@ -7,6 +7,7 @@ const multer = require("multer")
 const captcha = require("../lib/captcha")
 const { insertFile } = require("../db/models/files")
 const requireAuth = require("../middleware/requireAuth")
+const logger = require("../lib/logger")
 
 const acceptedFileTypes = new Set([
   "image/png",
@@ -76,13 +77,16 @@ router.post("/nocaptcha", requireAuth, async (req, res, next) => {
   // upload to aws s3
   if (useS3Upload)
     await aws.createObject(fileContent, newFileName).then((result) => {
-      console.log("file completed uploading.")
+      logger.log("file upload complete", "AWS")
       uploadedUrl = result
 
       // delete temporary file
       if (useTempFiles)
         fs.unlink(imageFile.tempFilePath, (err) => {
-          if (err) console.log(err)
+          if (err) {
+            console.log(err)
+            logger.error("unable to delete temporary file", "Temp Files")
+          }
         })
     })
   else {
@@ -91,12 +95,22 @@ router.post("/nocaptcha", requireAuth, async (req, res, next) => {
 
     if (useTempFiles)
       fs.unlink(imageFile.tempFilePath, (err) => {
-        if (err) console.log(err)
+        if (err) {
+          console.log(err)
+          logger.error("unable to delete temporary file", "Temp Files")
+        }
       })
   }
 
   // update database
-  insertFile(req.user.user_id, uploadedUrl, imageName, imageDesc)
+  const dbResult = await insertFile(
+    req.user.user_id,
+    uploadedUrl,
+    imageName,
+    imageDesc
+  )
+  console.log(dbResult)
+  logger.log("file upload complete", "File Upload")
 
   // render upload page
   res.render("uploadImage", { imageName, imageDesc, uploadedUrl })
@@ -109,11 +123,13 @@ router.post("/", requireAuth, async (req, res, next) => {
     !req.session.captchaText ||
     !req.body.captcha ||
     req.session.captchaText !== req.body.captcha
-  )
+  ) {
+    logger.error("user failed captcha or didn't do it properly", "Captcha")
     return res.render("error", {
       title: "400 - Bad Request",
       message: "You did not type the CAPTCHA text correctly.",
     })
+  }
 
   /* --- ERROR CHECKING --- */
   // file upload and valid input checking and restrictions
@@ -164,13 +180,16 @@ router.post("/", requireAuth, async (req, res, next) => {
   // upload to aws s3
   if (useS3Upload)
     await aws.createObject(fileContent, newFileName).then((result) => {
-      console.log("file completed uploading.")
+      logger.log("file upload complete")
       uploadedUrl = result
 
       // delete temporary file
       if (useTempFiles)
         fs.unlink(imageFile.tempFilePath, (err) => {
-          if (err) console.log(err)
+          if (err) {
+            console.log(err)
+            logger.error("unable to delete temporary file", "Temp Files")
+          }
         })
     })
   else {
@@ -179,12 +198,22 @@ router.post("/", requireAuth, async (req, res, next) => {
 
     if (useTempFiles)
       fs.unlink(imageFile.tempFilePath, (err) => {
-        if (err) console.log(err)
+        if (err) {
+          console.log(err)
+          logger.error("unable to delete temporary file", "Temp Files")
+        }
       })
   }
 
   // update database
-  insertFile(req.user.user_id, uploadedUrl, imageName, imageDesc)
+  const dbResult = await insertFile(
+    req.user.user_id,
+    uploadedUrl,
+    imageName,
+    imageDesc
+  )
+  console.log(dbResult)
+  logger.log("file upload complete", "File Upload")
 
   // render upload page
   res.render("uploadImage", { imageName, imageDesc, uploadedUrl })

@@ -1,4 +1,5 @@
 const client = require("../client")
+const logger = require("../../lib/logger")
 
 exports.getFiles = async function (user_id) {
   const q = {
@@ -17,7 +18,10 @@ exports.getFiles = async function (user_id) {
   return client
     .query(q)
     .then((res) => res.rows)
-    .catch((err) => console.log(err.stack))
+    .catch((err) => {
+      console.log(err.stack)
+      logger.error("unable to GET files", "SQL Query")
+    })
 }
 
 exports.insertFile = async function (
@@ -37,5 +41,8 @@ exports.insertFile = async function (
   return client
     .query(q)
     .then((res) => res.rows)
-    .catch((err) => console.log(err.stack))
+    .catch((err) => {
+      console.log(err.stack)
+      logger.error("unable to INSERT file", "SQL Query")
+    })
 }
