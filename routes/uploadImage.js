@@ -29,10 +29,18 @@ router.post("/nocaptcha", requireAuth, async (req, res, next) => {
 
   /* --- ERROR CHECKING --- */
   // file upload error checking and restrictions
-  if (!req.files || !req.files.imageFile)
+  if (
+    !(
+      req.files &&
+      req.files.imageFile &&
+      req.body.imageName &&
+      req.body.imageDesc
+    )
+  )
     return res.render("error", {
       title: "400 - Bad Request",
-      message: "You did not upload an image using the form.",
+      message:
+        "You must provide an image name, description, and the file you want to upload.",
     })
 
   // validate file type
@@ -108,11 +116,19 @@ router.post("/", requireAuth, async (req, res, next) => {
     })
 
   /* --- ERROR CHECKING --- */
-  // file upload error checking and restrictions
-  if (!req.files || !req.files.imageFile)
+  // file upload and valid input checking and restrictions
+  if (
+    !(
+      req.files &&
+      req.files.imageFile &&
+      req.body.imageName &&
+      req.body.imageDesc
+    )
+  )
     return res.render("error", {
       title: "400 - Bad Request",
-      message: "You did not upload an image using the form.",
+      message:
+        "You must provide an image name, description, and the file you want to upload.",
     })
 
   // validate file type
