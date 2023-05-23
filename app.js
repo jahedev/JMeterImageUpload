@@ -7,6 +7,7 @@ const fileupload = require("express-fileupload")
 const session = require("express-session")
 const cookieParser = require("cookie-parser")
 const requireAuth = require("./middleware/requireAuth")
+const { createFolder } = require("./lib/fileops")
 const port = 80
 
 // --- CONFIGURATION ---
@@ -14,6 +15,7 @@ app.set("view engine", "pug")
 app.set("trust proxy", 1) // trust first proxy
 app.set("config", require("./config"))
 const config = app.get("config")
+createFolder(config.customSettings.uploadPath) // create folder where files are uploaded
 
 // --- MIDDLEWARE ---
 app.use(express.json())

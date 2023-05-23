@@ -3,8 +3,10 @@ const router = express.Router()
 const fs = require("fs")
 
 router.get("/:filename", async (req, res) => {
+  const uploadDirectory = app.get("config").customSettings.uploadPath
+
   let { filename } = req.params
-  let path = `./fileStore/${filename}`
+  let path = `${uploadDirectory}/${filename}`
 
   // check if file exists
   if (!fs.existsSync(path)) return res.sendStatus(404)

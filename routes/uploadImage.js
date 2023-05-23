@@ -8,6 +8,8 @@ const captcha = require("../lib/captcha")
 const { insertFile } = require("../db/models/files")
 const requireAuth = require("../middleware/requireAuth")
 
+const uploadDirectory = app.get("config").customSettings.uploadPath
+
 const acceptedFileTypes = new Set([
   "image/png",
   "image/jpg",
@@ -76,7 +78,7 @@ router.post("/nocaptcha", requireAuth, async (req, res, next) => {
         })
     })
   else {
-    fs.writeFileSync(`./fileStore/${newFileName}`, fileContent)
+    fs.writeFileSync(`./${uploadDirectory}/${newFileName}`, fileContent)
     uploadedUrl = `/files/${newFileName}`
 
     if (useTempFiles)
@@ -154,7 +156,7 @@ router.post("/", requireAuth, async (req, res, next) => {
         })
     })
   else {
-    fs.writeFileSync(`./fileStore/${newFileName}`, fileContent)
+    fs.writeFileSync(`./${uploadDirectory}/${newFileName}`, fileContent)
     uploadedUrl = `/files/${newFileName}`
 
     if (useTempFiles)

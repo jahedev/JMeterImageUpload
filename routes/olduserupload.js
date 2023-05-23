@@ -8,6 +8,8 @@ const captcha = require("../lib/captcha")
 const { insertFile } = require("../db/models/files")
 const requireAuth = require("../middleware/requireAuth")
 
+const uploadDirectory = app.get("config").customSettings.uploadPath
+
 const acceptedFileTypes = new Set([
   "image/png",
   "image/jpg",
@@ -87,7 +89,7 @@ const uploadFile = async (req, res, next) => {
         })
     })
   } else {
-    fs.writeFileSync(`./fileStore/${req.newFileName}`, req.fileContent)
+    fs.writeFileSync(`./${uploadDirectory}/${req.newFileName}`, req.fileContent)
     req.uploadedUrl = `./files/${req.newFileName}`
 
     if (req.useTempFiles)

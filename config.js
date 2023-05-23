@@ -7,7 +7,7 @@ const config = {
     safeFileNames: true,
     preserveExtension: true,
     limits: {
-      fileSize: 7 * 1024 * 1024, // 7 MiB
+      fileSize: 5 * 1024 * 1024, // 5 MiB
     },
     abortOnLimit: true,
     responseOnLimit: `
@@ -27,6 +27,7 @@ const config = {
   customSettings: {
     useTestCaptcha: true,
     useS3Upload: process.env.USE_S3.toLowerCase().trim() == "true",
+    uploadPath: "./fileStore",
   },
 }
 
