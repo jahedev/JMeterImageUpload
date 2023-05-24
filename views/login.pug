@@ -2,8 +2,7 @@ doctype html
 html
     head 
         title JMeter Image Upload
-        style 
-            include ./include/style.css
+        link(rel='stylesheet', href='/public/assets/css/style.css')
     body 
         main.main
             .center-container
@@ -21,5 +20,4 @@ html
                     br
                     input(type="submit" value="Submit")
                 a.center(href='/signup') Signup Here
-        script 
-            include ./include/validate.js
+        script(src="/public/assets/js/validate.js") 

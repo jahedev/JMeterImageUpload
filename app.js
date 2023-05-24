@@ -25,6 +25,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use(fileupload(config.fileupload))
 app.use(session(config.session))
+app.use("/public", express.static("public"))
 
 // --- ROUTES ---
 app.use("/", require("./routes/root"))
@@ -37,6 +38,6 @@ app.use("/uploadImage", require("./routes/uploadImage"))
 
 // --- RUN SERVER ---
 app.listen(port, () => {
-  console.log()
+  console.log("\n\n")
   logger.special(`Listening on http://localhost:${port}/`, "Server Status")
 })

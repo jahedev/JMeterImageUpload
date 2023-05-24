@@ -114,8 +114,9 @@ router.post("/nocaptcha", requireAuth, async (req, res, next) => {
     imageName,
     imageDesc
   )
-  console.log(dbResult)
-  logger.log("file upload complete", "File Upload")
+
+  const { file_id, user_id, file_url } = dbResult
+  logger.log(`f:${file_id} | u:${user_id} | ${file_url}`, "File Upload")
 
   // render upload page
   res.render("uploadImage", { imageName, imageDesc, uploadedUrl })
@@ -222,8 +223,9 @@ router.post("/", requireAuth, async (req, res, next) => {
     imageName,
     imageDesc
   )
-  console.log(dbResult)
-  logger.log("file upload complete", "File Upload")
+
+  const { file_id, user_id, file_url } = dbResult[0]
+  logger.log(`f:${file_id} | u:${user_id} | ${file_url}`, "File Upload")
 
   // render upload page
   res.render("uploadImage", { imageName, imageDesc, uploadedUrl })

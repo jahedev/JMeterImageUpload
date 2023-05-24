@@ -2,8 +2,7 @@ doctype html
 html
     head 
         title JMeter Image Upload
-        style 
-            include ./include/style.css
+        link(rel='stylesheet', href='/public/assets/css/style.css')
     body 
         main.main
             .center-container
@@ -29,5 +28,5 @@ html
                     span(class="error" id="lastNameError") 
                     br
                     input(type="submit" value="Submit")
-        script 
-            include ./include/validate.js
+                a.center(href='/login') Login Here
+        script(src="/public/assets/js/validate.js") 
