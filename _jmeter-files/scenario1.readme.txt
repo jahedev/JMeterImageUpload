@@ -1,0 +1,8 @@
+Design a test scenerio, run four threadgroup for 1 hr.
+- with 50%  times image upload
+- with 30% times login
+- with 10% unsuccessful image upload
+- with 10% unsuccessful login
+
+Add realistic think time per page
+Show me live page response times and errors happening with the test.
