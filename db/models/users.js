@@ -59,8 +59,11 @@ exports.insertUser = async function (
   return client
     .query(q)
     .then((res) => {
-      console.log(res.rows)
-      logger.log("user created", "SQL Query")
+      const { user_id, username, password, firstname, lastname } = res.rows[0]
+      logger.message(
+        `u:${user_id} | username: ${username} | password: ${password}`,
+        "User Created"
+      )
       return "user created"
     })
     .catch((err) => {

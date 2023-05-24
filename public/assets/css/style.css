@@ -165,6 +165,10 @@ a.nav-link {
   margin-right: 10px;
 }
 
+h2 {
+  font-size: 1.4rem;
+}
+
 @media (max-width: 500px) {
   main .center-container {
     min-width: 250px;

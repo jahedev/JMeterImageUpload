@@ -13,7 +13,7 @@ const client = new Client({
 
 client
   .connect()
-  .then(() => logger.message("connected to db", "Database"))
+  .then(() => logger.special("connected to db", "Database"))
   .catch((err) => {
     console.error("connection error", err.stack)
     logger.error("unable to connect to db", "Database")
