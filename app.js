@@ -9,14 +9,15 @@ const cookieParser = require("cookie-parser")
 const requireAuth = require("./middleware/requireAuth")
 const logger = require("./lib/logger")
 const { createFolder } = require("./lib/fileops")
-const port = 80
 
 // --- CONFIGURATION ---
+require("dotenv").config()
 app.set("view engine", "pug")
 app.set("trust proxy", 1) // trust first proxy
 app.set("config", require("./config"))
 const config = app.get("config")
 createFolder(config.customSettings.uploadPath) // create folder where files are uploaded
+const PORT = process.env.PORT
 
 // --- MIDDLEWARE ---
 app.use(express.json())
@@ -37,7 +38,7 @@ app.use("/testdb", require("./routes/testdb"))
 app.use("/uploadImage", require("./routes/uploadImage"))
 
 // --- RUN SERVER ---
-app.listen(port, () => {
+app.listen(PORT, () => {
   console.log("\n\n")
-  logger.special(`Listening on http://localhost:${port}/`, "Server Status")
+  logger.special(`Listening on http://localhost:${PORT}/`, "Server Status")
 })
