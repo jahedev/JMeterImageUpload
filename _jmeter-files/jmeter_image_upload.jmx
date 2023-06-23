@@ -28,16 +28,6 @@
         </collectionProp>
       </HeaderManager>
       <hashTree/>
-      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-        <collectionProp name="Arguments.arguments">
-          <elementProp name="BASE_URL_1" elementType="Argument">
-            <stringProp name="Argument.name">BASE_URL_1</stringProp>
-            <stringProp name="Argument.value">jmetertest.com</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-        </collectionProp>
-      </Arguments>
-      <hashTree/>
       <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
         <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
           <collectionProp name="Arguments.arguments"/>
@@ -77,11 +67,11 @@
         <boolProp name="CacheManager.controlledByThread">false</boolProp>
       </CacheManager>
       <hashTree/>
-      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Login Sheet" enabled="true">
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Login Sheet (CSV)" enabled="true">
         <stringProp name="delimiter">,</stringProp>
         <stringProp name="fileEncoding"></stringProp>
-        <stringProp name="filename">D:/images/login.csv</stringProp>
-        <boolProp name="ignoreFirstLine">false</boolProp>
+        <stringProp name="filename">C:/jmeterimageupload/_mock_data/login_users/existing_users.csv</stringProp>
+        <boolProp name="ignoreFirstLine">true</boolProp>
         <boolProp name="quotedData">false</boolProp>
         <boolProp name="recycle">true</boolProp>
         <stringProp name="shareMode">shareMode.all</stringProp>
@@ -89,11 +79,11 @@
         <stringProp name="variableNames"></stringProp>
       </CSVDataSet>
       <hashTree/>
-      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Signup Sheet" enabled="true">
-        <stringProp name="filename">D:/images/signup.csv</stringProp>
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Signup Sheet (CSV)" enabled="true">
+        <stringProp name="filename">C:/jmeterimageupload/_mock_data/signup_users/signup_users.csv</stringProp>
         <stringProp name="fileEncoding"></stringProp>
         <stringProp name="variableNames"></stringProp>
-        <boolProp name="ignoreFirstLine">false</boolProp>
+        <boolProp name="ignoreFirstLine">true</boolProp>
         <stringProp name="delimiter">,</stringProp>
         <boolProp name="quotedData">false</boolProp>
         <boolProp name="recycle">true</boolProp>
@@ -101,7 +91,22 @@
         <stringProp name="shareMode">shareMode.all</stringProp>
       </CSVDataSet>
       <hashTree/>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Signup" enabled="true">
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="Variables" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="BASE_URL_1" elementType="Argument">
+            <stringProp name="Argument.name">BASE_URL_1</stringProp>
+            <stringProp name="Argument.value">ec2-18-212-76-255.compute-1.amazonaws.com</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="IMAGE_PATH" elementType="Argument">
+            <stringProp name="Argument.name">IMAGE_PATH</stringProp>
+            <stringProp name="Argument.value">C:\jmeterimageupload\_jmeter-files\images\1.jpg</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Signup" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -368,7 +373,7 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">5</stringProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
         <stringProp name="ThreadGroup.ramp_time">1</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration">0</stringProp>
@@ -518,9 +523,9 @@
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://jmetertest.com/uploadImage" enabled="true">
             <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
               <collectionProp name="HTTPFileArgs.files">
-                <elementProp name="D:\images\7.jpg" elementType="HTTPFileArg">
+                <elementProp name="${IMAGE_PATH}" elementType="HTTPFileArg">
                   <stringProp name="File.mimetype">image/jpeg</stringProp>
-                  <stringProp name="File.path">D:\images\7.jpg</stringProp>
+                  <stringProp name="File.path">${IMAGE_PATH}</stringProp>
                   <stringProp name="File.paramname">imageFile</stringProp>
                 </elementProp>
               </collectionProp>
@@ -757,6 +762,133 @@
           </objProp>
           <stringProp name="filename"></stringProp>
         </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.ResponseTimesPercentilesGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Response Times Percentiles" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+          <longProp name="interval_grouping">500</longProp>
+          <boolProp name="graph_aggregated">false</boolProp>
+          <stringProp name="include_sample_labels"></stringProp>
+          <stringProp name="exclude_sample_labels"></stringProp>
+          <stringProp name="start_offset"></stringProp>
+          <stringProp name="end_offset"></stringProp>
+          <boolProp name="include_checkbox_state">false</boolProp>
+          <boolProp name="exclude_checkbox_state">false</boolProp>
+        </kg.apc.jmeter.vizualizers.CorrectedResultCollector>
+        <hashTree/>
+        <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.LatenciesOverTimeGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Response Latencies Over Time" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+          <longProp name="interval_grouping">500</longProp>
+          <boolProp name="graph_aggregated">false</boolProp>
+          <stringProp name="include_sample_labels"></stringProp>
+          <stringProp name="exclude_sample_labels"></stringProp>
+          <stringProp name="start_offset"></stringProp>
+          <stringProp name="end_offset"></stringProp>
+          <boolProp name="include_checkbox_state">false</boolProp>
+          <boolProp name="exclude_checkbox_state">false</boolProp>
+        </kg.apc.jmeter.vizualizers.CorrectedResultCollector>
         <hashTree/>
       </hashTree>
     </hashTree>

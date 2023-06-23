@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const csv = require('csv-parser');
 
-const outputFilename = 'output.csv';
+const outputFilename = 'signup_users.csv';
 const usernameIndex = 0;
 const emailIndex = 1;
 
